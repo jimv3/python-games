@@ -32,15 +32,27 @@ def checkCave(chosenCave):
 
     if chosenCave == str(friendlyCave):
         print('Gives you his treasure!')
+        return 1
     else:
         print('Gobbles you down in one bite!')
+        return 0
 
 
 playAgain = 'yes'
+gamesPlayed = 0
+gotTreasure = 0
 while playAgain == 'yes' or playAgain == 'y':
+    gamesPlayed += 1
     displayIntro()
     caveNumber = chooseCave()
-    checkCave(caveNumber)
+    gotTreasure += checkCave(caveNumber)
 
-    print('Do you want to play again? (yes or no)')
-    playAgain = input()
+    playAgain = ''
+    while not playAgain:
+        print('Do you want to play again? ([y]es, [n]o or [s]tatistics)')
+        playAgain = input()
+        if playAgain == 'statistics' or playAgain == 's':
+            print(f'You have played {gamesPlayed} games.')
+            print(f'You have gotten treasure {gotTreasure} times and have been eaten {gamesPlayed - gotTreasure} times.')
+            print(f'You have gotten treasure {gotTreasure / gamesPlayed * 100:.2f}% of the time.')
+            playAgain = ''
