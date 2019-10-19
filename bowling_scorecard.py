@@ -30,9 +30,9 @@ def execute_turn(frame):
     def get_score(ball, mark, remaining=10):
         val = ''
         score = 0
-        choices = [str(x) for x in range(remaining + 1)] + [mark]
+        choices = [str(x) for x in range(remaining)] + [mark]
         while val not in choices:
-            print(f'    Ball {ball}', end=' ')
+            print(f'    Ball {ball} (0-{remaining - 1} or {mark})', end=' ')
             val = input().upper()
         if val == 'X':
             score = 10
@@ -91,11 +91,11 @@ if __name__ == '__main__':
     player_names = get_player_names(number_of_players)
     players = {}
     for name in player_names:
-        players[name] = []
+        players[name] = [(0, 0, 0) for _ in range(10)]
     while current_frame <= 10:
         print(f'FRAME {current_frame}')
         for name, scores in players.items():
             print(f' >> {name}')
-            scores.append(execute_turn(current_frame))
+            scores[current_frame - 1] = execute_turn(current_frame)
         current_frame += 1
-    print_scores(players)
+        print_scores(players)
