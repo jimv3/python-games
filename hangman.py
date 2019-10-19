@@ -46,18 +46,24 @@ HANGMAN_PICS = ['''
  / \  |
      ===''']
 
-words = ('ant baboon badger bat bear beaver camel cat clam cobra cougar coyote crow deer dog donkey duck ' +
+words = {}
+words['animal'] = ('ant baboon badger bat bear beaver camel cat clam cobra cougar coyote crow deer dog donkey duck ' +
          'eagle ferret fox frog goat goose hawk lion lizard llama mole monkey moose mouse mule newt ' +
          'otter owl panda parrot pigeon python rabbit ram rat raven rhino salmon seal shark sheep ' +
          'skunk sloth snake spider stork swan tiger toad trout turkey turtle weasel whale wolf wombat zebra').split()
-
+words['city'] = ('amsterdam asheville athens atlanta birminham chattanooga huntsville knoxville memphis nashville ' +
+         'tallahassee topeka chicago denver boulder flagstaff missoula detroit indianapolis boston tampa miami orlando ' +
+         'omaha seattle portland murfreesboro shelbyville smyrna lavergne hendersonville gallatin lebanon watertown ' +
+         'gainsville jacksonville hershey pittsburgh lewisburg cornersville bucksnort columbia cincinnati').split()
+words['color'] = ('blue brown amber orange red yellow green purple indigo cyan magenta black white lavender mauve ' + 
+         'lilac tan beige teal pink gray').split()
 
 def getRandomWord(wordList):
     wordIndex = random.randint(0, len(wordList) - 1)
     return wordList[wordIndex]
 
 
-def displayBoard(missedLetters, correctLetters, secretWord):
+def displayBoard(missedLetters, correctLetters, secretWord, category):
     print(HANGMAN_PICS[len(missedLetters)])
     print()
 
@@ -66,6 +72,7 @@ def displayBoard(missedLetters, correctLetters, secretWord):
         print(letter, end=' ')
     print()
 
+    print(category.upper())
     blanks = '_' * len(secretWord)
 
     for i in range(len(secretWord)):
@@ -99,11 +106,12 @@ def playAgain():
 print('H A N G M A N')
 missedLetters = ''
 correctLetters = ''
-secretWord = getRandomWord(words)
+category = random.choice(['animal', 'color', 'city'])
+secretWord = getRandomWord(words[category])
 gameIsDone = False
 
 while True:
-    displayBoard(missedLetters, correctLetters, secretWord)
+    displayBoard(missedLetters, correctLetters, secretWord, category)
 
     guess = getGuess(missedLetters + correctLetters)
 
@@ -123,7 +131,7 @@ while True:
         missedLetters = missedLetters + guess
 
         if len(missedLetters) == len(HANGMAN_PICS) - 1:
-            displayBoard(missedLetters, correctLetters, secretWord)
+            displayBoard(missedLetters, correctLetters, secretWord, category)
             print(
                 f'You have run out of guesses!\nAfter {len(missedLetters)} missed guesses and {len(correctLetters)} correct guesses, the word was {secretWord}.')
             gameIsDone = True
@@ -133,6 +141,7 @@ while True:
             missedLetters = ''
             correctLetters = ''
             gameIsDone = False
-            secretWord = getRandomWord(words)
+            category = random.choice(['animal', 'city', 'color'])
+            secretWord = getRandomWord(words[category])
         else:
             break
