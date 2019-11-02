@@ -89,13 +89,13 @@ if __name__ == '__main__':
     current_frame = 1
     number_of_players = get_number_of_players()
     player_names = get_player_names(number_of_players)
-    players = {}
+    scorecard = {}
     for name in player_names:
-        players[name] = [(0, 0, 0) for _ in range(10)]
+        scorecard[name] = [(0, 0, 0) for _ in range(10)]
     while current_frame <= 10:
         print(f'FRAME {current_frame}')
-        for name, scores in players.items():
+        for name, scores in scorecard.items():
             print(f' >> {name}')
             scores[current_frame - 1] = execute_turn(current_frame)
         current_frame += 1
-        print_scores(players)
+        print_scores(scorecard)
