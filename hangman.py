@@ -106,7 +106,7 @@ def playAgain():
 print('H A N G M A N')
 missedLetters = ''
 correctLetters = ''
-category = random.choice(['animal', 'color', 'city'])
+category = random.choice(list(words.keys()))
 secretWord = getRandomWord(words[category])
 gameIsDone = False
 
