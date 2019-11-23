@@ -1,0 +1,60 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}Index{% endblock %}
+{% block head %}
+{{ super() }}
+<style>
+    body {
+        margin: 15px;
+    }
+
+    div {
+        margin: auto;
+        position: relative;
+        text-align: center;
+    }
+
+    pre {
+        font-size: xx-large;
+    }
+
+    .gallows {
+        top: 50%;
+        width: 20%;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<div>
+    <h1>{{category}}</h1>
+</div>
+<div class="gallows">
+    <pre>
+        {{gallows}}
+    </pre>
+</div>
+<div>
+    <pre>
+        {{board}}
+    </pre>
+</div>
+<div>
+    {% for l in 'q w e r t y u i o p'.split() %}
+    <button type="button" class="btn btn-info {% if l in missed %} btn-danger {% endif %}" id="btn{{l}}"
+        onclick="window.location.href='/hangman/{{session_id}}/{{l}}'" {% if l in already_guessed %} disabled
+        {% endif %}>{{l.upper()}}</button>
+    {% endfor %}
+    <br>
+    {% for l in 'a s d f g h j k l'.split() %}
+    <button type="button" class="btn btn-info {% if l in missed %} btn-danger {% endif %}" id="btn{{l}}"
+        onclick="window.location.href='/hangman/{{session_id}}/{{l}}'" {% if l in already_guessed %} disabled
+        {% endif %}>{{l.upper()}}</button>
+    {% endfor %}
+    <br>
+    {% for l in 'z x c v b n m'.split() %}
+    <button type="button" class="btn btn-info {% if l in missed %} btn-danger {% endif %}" id="btn{{l}}"
+        onclick="window.location.href='/hangman/{{session_id}}/{{l}}'" {% if l in already_guessed %} disabled
+        {% endif %}>{{l.upper()}}</button>
+    {% endfor %}
+</div>
+{% endblock %}

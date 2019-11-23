@@ -1,0 +1,16 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}Index{% endblock %}
+{% block head %}
+{{ super() }}
+<style>
+    body {
+        margin: 15px;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<div>
+    <button type="button" class="btn btn-info" id="btnQ" onclick="window.location.href='/hangman'">Hangman</button>
+</div>
+{% endblock %}
