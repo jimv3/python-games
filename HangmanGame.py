@@ -98,11 +98,11 @@ class HangmanGame():
         return self._won
 
     def display_board(self):
-        blanks = '_' * len(self._secret_word)
+        blanks = '_ ' * len(self._secret_word)
 
         for i in range(len(self._secret_word)):
             if self._secret_word[i] in self._correct_letters:
-                blanks = blanks[:i] + self._secret_word[i] + blanks[i + 1:]
+                blanks = blanks[:i*2] + self._secret_word[i] + ' ' + blanks[(i + 1) * 2:]
 
         return blanks
 
