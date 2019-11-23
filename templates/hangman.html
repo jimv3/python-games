@@ -22,6 +22,16 @@
         top: 50%;
         width: 20%;
     }
+
+    .board {
+        font-style: oblique;
+        font-family: 'Courier New', Courier, monospace;
+        margin: 30px;
+    }
+
+    .keyboard {
+        margin: 4px;
+    }
 </style>
 {% endblock %}
 {% block body %}
@@ -33,24 +43,24 @@
         {{gallows}}
     </pre>
 </div>
-<div>
-    <pre>
-        {{board}}
-    </pre>
+<div class="board">
+    <h1>{{board}}</h1>
 </div>
-<div>
+<div class="keyboard">
     {% for l in 'q w e r t y u i o p'.split() %}
     <button type="button" class="btn btn-info {% if l in missed %} btn-danger {% endif %}" id="btn{{l.upper()}}"
         onclick="window.location.href='/hangman/{{session_id}}/{{l}}'" {% if l in already_guessed %} disabled
         {% endif %}>{{l.upper()}}</button>
     {% endfor %}
-    <br>
+</div>
+<div class="keyboard">
     {% for l in 'a s d f g h j k l'.split() %}
     <button type="button" class="btn btn-info {% if l in missed %} btn-danger {% endif %}" id="btn{{l.upper()}}"
         onclick="window.location.href='/hangman/{{session_id}}/{{l}}'" {% if l in already_guessed %} disabled
         {% endif %}>{{l.upper()}}</button>
     {% endfor %}
-    <br>
+</div>
+<div class="keyboard">
     {% for l in 'z x c v b n m'.split() %}
     <button type="button" class="btn btn-info {% if l in missed %} btn-danger {% endif %}" id="btn{{l.upper()}}"
         onclick="window.location.href='/hangman/{{session_id}}/{{l}}'" {% if l in already_guessed %} disabled
