@@ -48,21 +48,21 @@
 </div>
 <div class="keyboard">
     {% for l in 'q w e r t y u i o p'.split() %}
-    <button type="button" class="btn btn-info {% if l in missed %} btn-danger {% endif %}" id="btn{{l.upper()}}"
+    <button type="button" class="btn {% if l in missed %} btn-danger {% elif l in already_guessed %} btn-success {% else %} btn-info {% endif %}" id="btn{{l.upper()}}"
         onclick="window.location.href='/hangman/{{session_id}}/{{l}}'" {% if l in already_guessed %} disabled
         {% endif %}>{{l.upper()}}</button>
     {% endfor %}
 </div>
 <div class="keyboard">
     {% for l in 'a s d f g h j k l'.split() %}
-    <button type="button" class="btn btn-info {% if l in missed %} btn-danger {% endif %}" id="btn{{l.upper()}}"
+    <button type="button" class="btn {% if l in missed %} btn-danger {% elif l in already_guessed %} btn-success {% else %} btn-info {% endif %}" id="btn{{l.upper()}}"
         onclick="window.location.href='/hangman/{{session_id}}/{{l}}'" {% if l in already_guessed %} disabled
         {% endif %}>{{l.upper()}}</button>
     {% endfor %}
 </div>
 <div class="keyboard">
     {% for l in 'z x c v b n m'.split() %}
-    <button type="button" class="btn btn-info {% if l in missed %} btn-danger {% endif %}" id="btn{{l.upper()}}"
+    <button type="button" class="btn {% if l in missed %} btn-danger {% elif l in already_guessed %} btn-success {% else %} btn-info {% endif %}" id="btn{{l.upper()}}"
         onclick="window.location.href='/hangman/{{session_id}}/{{l}}'" {% if l in already_guessed %} disabled
         {% endif %}>{{l.upper()}}</button>
     {% endfor %}
