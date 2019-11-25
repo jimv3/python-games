@@ -16,17 +16,33 @@
 
     pre {
         font-size: xx-large;
+        background-color: inherit;
+        border: none;
     }
 
     .gallows {
         top: 50%;
-        width: 30%;
+        width: 20%;
+    }
+
+    .board {
+        font-style: oblique;
+        font-family: 'Courier New', Courier, monospace;
+        margin: 30px;
     }
 </style>
 {% endblock %}
 {% block body %}
 <div>
     <h1>{% if winner %}WINNER!!{% else %}Sorry, you missed it{% endif %}</h1>
+    <div>
+        <pre>
+            {{gallows}}
+        </pre>
+    </div>
+    <div class="board">
+        <h1>{{board}}</h1>
+    </div>
     <h3>The word was {{secret_word}}</h3>
     <button id="playAgain" class="btn btn-primary" onclick="window.location.href='/hangman'">Play Again</button>
 </div>

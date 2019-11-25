@@ -30,7 +30,7 @@ def hangman_make_guess(session_id, guess):
     game.make_guess(guess)
     if game.game_is_done():
         del sessions[session_id]
-        return render_template('hangman_game_over.html', winner=game.is_winner(), secret_word=game._secret_word)
+        return render_template('hangman_game_over.html', gallows=game.display_gallows(), board=game.display_board(), winner=game.is_winner(), secret_word=game._secret_word)
     else:
         return create_hangman_page(session_id, game)
 
