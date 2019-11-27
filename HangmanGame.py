@@ -102,7 +102,8 @@ class HangmanGame():
 
         for i in range(len(self._secret_word)):
             if self._secret_word[i] in self._correct_letters:
-                blanks = blanks[:i*2] + self._secret_word[i] + ' ' + blanks[(i + 1) * 2:]
+                blanks = blanks[:i*2] + self._secret_word[i] + \
+                    ' ' + blanks[(i + 1) * 2:]
 
         return blanks
 

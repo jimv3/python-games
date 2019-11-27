@@ -34,8 +34,10 @@ def hangman_make_guess(session_id, guess):
     else:
         return create_hangman_page(session_id, game)
 
+
 def create_hangman_page(session_id, game):
     return render_template('hangman.html', gallows=game.display_gallows(), category=game.get_category(), board=game.display_board(), session_id=session_id, missed=game.missed(), already_guessed=game.already_guessed())
+
 
 if __name__ == '__main__':
     app.run()
