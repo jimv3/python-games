@@ -1,41 +1,5 @@
-{% extends "bootstrap/base.html" %}
-
-{% block title %}Index{% endblock %}
-{% block head %}
-{{ super() }}
-<style>
-    body {
-        margin: 15px;
-    }
-
-    div {
-        margin: auto;
-        position: relative;
-        text-align: center;
-    }
-
-    pre {
-        font-size: xx-large;
-        background-color: inherit;
-        border: none;
-    }
-
-    .gallows {
-        top: 50%;
-        width: 20%;
-    }
-
-    .board {
-        font-style: oblique;
-        font-family: 'Courier New', Courier, monospace;
-        margin: 30px;
-    }
-
-    .keyboard {
-        margin: 4px;
-    }
-</style>
-{% endblock %}
+{% extends "my_base.html" %}
+{% block title %}Hangman{% endblock %}
 {% block body %}
 <div>
     <h1>{{category}}</h1>

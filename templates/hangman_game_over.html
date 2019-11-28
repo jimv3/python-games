@@ -1,37 +1,6 @@
-{% extends "bootstrap/base.html" %}
+{% extends "my_base.html" %}
 
-{% block title %}Index{% endblock %}
-{% block head %}
-{{ super() }}
-<style>
-    body {
-        margin: 15px;
-    }
-
-    div {
-        margin: auto;
-        position: relative;
-        text-align: center;
-    }
-
-    pre {
-        font-size: xx-large;
-        background-color: inherit;
-        border: none;
-    }
-
-    .gallows {
-        top: 50%;
-        width: 20%;
-    }
-
-    .board {
-        font-style: oblique;
-        font-family: 'Courier New', Courier, monospace;
-        margin: 30px;
-    }
-</style>
-{% endblock %}
+{% block title %}Game Over{% endblock %}
 {% block body %}
 <div>
     <h1>{% if winner %}WINNER!!{% else %}Sorry, you missed it{% endif %}</h1>
